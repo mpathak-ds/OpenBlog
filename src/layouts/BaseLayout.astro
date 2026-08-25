@@ -1,0 +1,40 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = 'Personal Engineering & Systems Blog' } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en" class="bg-neutral-950 text-neutral-100 antialiased selection:bg-cyan-500 selection:text-black">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title} | OpenBlog</title>
+    <meta name="description" content={description} />
+  </head>
+  <body class="min-h-screen flex flex-col max-w-3xl mx-auto px-6 py-12 font-sans border-x border-neutral-900">
+    <header class="mb-12 pb-6 border-b border-neutral-800 flex justify-between items-center">
+      <a href="/" class="font-mono font-semibold text-lg tracking-tight text-neutral-100 hover:text-cyan-400 transition-colors">
+        <span class="text-cyan-500">openblog</span>
+      </a>
+      <nav class="flex gap-6 font-mono text-sm text-neutral-400">
+        <a href="/" class="hover:text-neutral-100 transition-colors">/posts</a>
+        <a href="https://github.com/mpathak-ds" target="_blank" class="hover:text-neutral-100 transition-colors">/github</a>
+      </nav>
+    </header>
+
+    <main class="flex-grow">
+      <slot />
+    </main>
+
+    <footer class="mt-20 pt-6 border-t border-neutral-900 font-mono text-xs text-neutral-500 flex justify-between">
+      <span>website status 200</span>
+      <span>&copy; {new Date().getFullYear()}</span>
+    </footer>
+  </body>
+</html>
